@@ -1,5 +1,7 @@
+<h1>Organisation</h1>
 <p id="notice"><%= notice %></p>
-<h1>organisation.name</h1>
-<%= link_to 'View Shifts', show_shifts_path(@shifts)%>
+<% Organisation.find(params) %>
+<%= "#{organisation.name}" %>
+
 <%= link_to 'Edit', edit_organisation_path(@organisation) %> |
-<%= link_to 'Leave', organisation, method: :delete, data: { confirm: 'Are you sure?' } %>
+

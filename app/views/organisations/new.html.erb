@@ -1,6 +1,11 @@
-<h1>New Organisation</h1>
-
-<%= render 'form', organisation: @organisation %>
 
 
-<%= link_to 'Back', organisations_path %>
+
+<%= form_for @organisation do |f| %>
+    <h1>New Organisation</h1>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :hourly_rate %>
+    <%= f.text_field :hourly_rate %><br>
+    <%= f.submit "Create Organisation"%>
+    <% end %>
