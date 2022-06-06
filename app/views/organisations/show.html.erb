@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h1>organisation.name</h1>
+<%= link_to 'View Shifts', show_shifts_path(@shifts)%>
 <%= link_to 'Edit', edit_organisation_path(@organisation) %> |
-<%= link_to 'Back', organisations_path %>
+<%= link_to 'Leave', organisation, method: :delete, data: { confirm: 'Are you sure?' } %>
