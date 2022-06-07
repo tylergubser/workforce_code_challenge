@@ -12,7 +12,7 @@
   <tbody>
     <% @organisations.each do |organisation| %>
       <tr>
-      <td><%= "#{organisation.name}" %></td>
+      <td><%= organisation.name %></td>
       <td><%= link_to 'Edit', edit_organisation_path(organisation) %></td>
         <td><%= link_to 'Show', organisation %></td>
         <td><%= link_to 'Leave', organisation, method: :delete, data: { confirm: 'Are you sure?' } %></td>

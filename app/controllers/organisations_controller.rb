@@ -26,7 +26,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       if @organisation.save
-        format.html { redirect_to organisation_url(@organisation), notice: "Organisation was successfully created." }
+        format.html { redirect_to organisations_path }
         format.json { render :show, status: :created, location: @organisation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class OrganisationsController < ApplicationController
   def update
     respond_to do |format|
       if @organisation.update(organisation_params)
-        format.html { redirect_to organisation_url(@organisation), notice: "Organisation was successfully updated." }
+        format.html { redirect_to organisations_path}
         format.json { render :show, status: :ok, location: @organisation }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -66,6 +66,6 @@ class OrganisationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organisation_params
-      params.permit(:name, :hourly_rate)
+      params.require(:organisation).permit(:name, :hourly_rate)
     end
 end

@@ -18,13 +18,13 @@
   <tbody>
     <% @shifts.each do |shift| %>
       <tr>
-      <th>"#{user.name}"</th>
-      <th>"#{shift.shift_date}"</th>
-      <th>"#{shift.start}"</th>
-      <th>"#{shift.finish}"</th>
-      <th>"#{shift.break_length}"</th>
-      <th>"#{(shift.finish - shift.start - shift.break_length)}"<th>
-      <th>"#{(shift.finish - shift.start - shift.break_length * organisation.hourly_rate)}"<th>
+      <th><%= shift.user.name %></th>
+      <th><%= shift.shift_date %></th>
+      <th><%= shift.start %></th>
+      <th><%= shift.finish %></th>
+      <th><%= shift.break_length %></th>
+      <th><%= (shift.finish - shift.start - shift.break_length) %><th>
+      <th><%= (shift.finish - shift.start - shift.break_length * shift.organisation.hourly_rate) %><th>
       <th><
         <td><%= link_to 'Show', shift %></td>
         <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
