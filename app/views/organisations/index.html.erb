@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Organisations</h1>
+<h1>Adnat</h1>
+<tr>
+<td><% @user = User.find(session[:user_id]) %></td>
+<td><%= "Logged in as #{@user.name} "%></td>
+<td><%= link_to 'Logout', root_path  %></td>
+</tr>
+<h3>Organisations</h3>
 
 <table>
   <thead>
@@ -14,8 +19,8 @@
       <tr>
       <td><%= organisation.name %></td>
       <td><%= link_to 'Edit', edit_organisation_path(organisation) %></td>
-        <td><%= link_to 'Show', organisation %></td>
-        <td><%= link_to 'Leave', organisation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Join', organisation %></td>
+       
       </tr>
     <% end %>
   </tbody>

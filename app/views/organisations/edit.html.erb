@@ -1,6 +1,12 @@
 
-<%= form_for @organisation do |f| %>
+<h1>Adnat</h1>
+<tr>
+<td><% @user = User.find(session[:user_id]) %></td>
+<td><%= "Logged in as #{@user.name} "%></td>
+<td><%= link_to 'Logout', root_path %></td>
+</tr>
 <h1>Edit Organisation</h1>
+<%= form_for @organisation do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
 <%= f.label :hourly_rate %>
@@ -8,5 +14,5 @@
 <%= f.submit "Update Organisation"%>
 <% end %>
 
-<%= link_to 'Show', @organisation %> |
+<%= link_to 'Delete', @organisation, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', organisations_path %>
