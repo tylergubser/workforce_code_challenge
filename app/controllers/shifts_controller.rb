@@ -65,6 +65,6 @@ class ShiftsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shift_params
-      params.fetch(:shift, {})
+      params.require(:shift).permit(:shift_date, :start, :finish, :break_length)
     end
 end

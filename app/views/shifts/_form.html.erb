@@ -1,17 +1,15 @@
 <%= form_with(model: shift) do |form| %>
-  <% if shift.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(shift.errors.count, "error") %> prohibited this shift from being saved:</h2>
-
-      <ul>
-        <% shift.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
+  <tr>
+  <%= form.label :shift_date %>
+  <%= form.text_field :shift_date %><br>
+  <%= form.label :start_time %>
+  <%= form.text_field :start%><br>
+  <%= form.label :finish_time %>
+  <%= form.text_field :finish %><br>
+  <%= form.label :break_length %>
+  <%= form.text_field :break_length %><br>
+  </tr>
+    <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
