@@ -8,6 +8,7 @@
 -Clone this repo to your local machine.
 
 -Run bundle install to install all of the dependencies 
+-Run rails webpacker:install to install webpack
 
 * Database initialization
 
