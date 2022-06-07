@@ -23,6 +23,9 @@
       <th>"#{shift.start}"</th>
       <th>"#{shift.finish}"</th>
       <th>"#{shift.break_length}"</th>
+      <th>"#{(shift.finish - shift.start - shift.break_length)}"<th>
+      <th>"#{(shift.finish - shift.start - shift.break_length * organisation.hourly_rate)}"<th>
+      <th><
         <td><%= link_to 'Show', shift %></td>
         <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
         <td><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
