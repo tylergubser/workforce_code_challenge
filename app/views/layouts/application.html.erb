@@ -11,6 +11,14 @@
   </head>
 
   <body>
+  <% if current_user %>
+    <h1>Adnat</h1>
+    <tr>
+    <td><% @user = User.find(session[:user_id]) %></td>
+    <td><%= "Logged in as #{@user.name} "%></td>
+    <td><%= link_to 'Logout', logout_path  %></td> 
+    </tr>
+  <% end %>
     <%= yield %>
   </body>
 </html>

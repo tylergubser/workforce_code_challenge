@@ -1,47 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Adnat</h1>
-<tr>
-<td><% @user = User.find(session[:user_id]) %></td>
-<td><%= "Logged in as #{@user.name} "%></td>
-<td><%= link_to 'Logout', logout_path  %></td>
-</tr>
+
 
 <h3>Shifts</h3>
-
+<div class = "grid">
 <table>
   <thead>
     <tr>
-      <th colspan="3">Employee name</th>
-      <th>Shift date</th>
-      <th>Start time</th>
-      <th>Finish time</th>
-      <th>Break length</th>
-      <th>Hours worked</th>
-      <th>Shift cost</th>
+      <th colspan="7">Employee name</th> 
+      <th>Shift date</th> 
+      <th>Start time</th> 
+      <th>Finish time</th> 
+      <th>Break length</th> 
+      <th>Hours worked</th> 
+      <th>Shift cost</th> 
     </tr>
   </thead>
 
   <tbody>
     <% @shifts.each do |shift| %>
       <tr>
-      <th><%= shift.user.name %></th>
-      <th><%= shift.shift_date %></th>
-      <th><%= shift.start %></th>
-      <th><%= shift.finish %></th>
-      <th><%= shift.break_length %></th>
-      <th><%= (shift.finish - shift.start - shift.break_length) %><th>
-      <th><%= (shift.finish - shift.start - shift.break_length)  %><th>
-      <th><
-        <td><%= link_to 'Show', shift %></td>
+      <td><%= shift.user.name %></td>
+      <td><%= shift.shift_date %></td>
+      <td><%= shift.start %></td>
+      <td><%= shift.finish %></td>
+      <td><%= shift.break_length %></td>
+      <td><%= (DateTime.parse(shift.finish).to_time - DateTime.parse(shift.start).to_time - shift.break_length) %><td>
+      <td><%= (DateTime.parse(shift.finish).to_time - DateTime.parse(shift.start).to_time - shift.break_length * @user.organisation.hourly_rate)  %><td>
+      <tr>
+      <% if @user.id == shift.user_id %>
         <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
         <td><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      </tr>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 
 <%= link_to 'New Shift', new_shift_path %>
-<%= link_to 'Back',  url_for(:back) %>
+<%= link_to 'Back', organisation_path(current_user.organisation_id) %>

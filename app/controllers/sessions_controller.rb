@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     def new
 
     end
-
+    # checking for valid email & password along with wether they belong to organisation
     def create
         @user = User.find_by(email_address: params[:email])
         if @user && @user.authenticate(params[:password]) && @user.organisation_id == nil

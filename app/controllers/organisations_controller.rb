@@ -1,26 +1,26 @@
 class OrganisationsController < ApplicationController
   before_action :set_organisation, only: %i[ show edit update destroy ]
 
-  # GET /organisations or /organisations.json
+  
   def index
     @organisations = Organisation.all
   end
 
-  # GET /organisations/1 or /organisations/1.json
+  
   def show
     @organisation = Organisation.find(params[:id])
   end
 
-  # GET /organisations/new
+  
   def new
     @organisation = Organisation.new
   end
 
-  # GET /organisations/1/edit
+ 
   def edit
   end
 
-  # POST /organisations or /organisations.json
+  
   def create
     @organisation = Organisation.new(organisation_params)
 
@@ -35,7 +35,7 @@ class OrganisationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /organisations/1 or /organisations/1.json
+  
   def update
     respond_to do |format|
       if @organisation.update(organisation_params)
@@ -48,7 +48,7 @@ class OrganisationsController < ApplicationController
     end
   end
 
-  # DELETE /organisations/1 or /organisations/1.json
+ 
   def destroy
     @organisation.destroy
 
@@ -59,12 +59,12 @@ class OrganisationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_organisation
       @organisation = Organisation.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+   
     def organisation_params
       params.require(:organisation).permit(:name, :hourly_rate)
     end

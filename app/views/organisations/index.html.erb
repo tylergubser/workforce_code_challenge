@@ -1,10 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>Adnat</h1>
-<tr>
-<td><% @user = User.find(session[:user_id]) %></td>
-<td><%= "Logged in as #{@user.name} "%></td>
-<td><%= link_to 'Logout', logout_path  %></td>
-</tr>
+
 <h2>Organisations</h2>
 
 <table>

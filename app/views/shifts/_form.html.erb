@@ -1,6 +1,6 @@
 <%= form_with(model: shift) do |form| %>
   <tr>
-  <%= form.hidden_field :user_id, value: @user.id %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.label :shift_date %>
   <%= form.text_field :shift_date %><br>
   <%= form.label :start_time %>
