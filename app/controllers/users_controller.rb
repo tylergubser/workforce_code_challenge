@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.create(user_params)
-
+    session[:user_id] = @user.id
     respond_to do |format|
       if @user.save
         format.html { redirect_to organisations_path}
@@ -56,6 +56,19 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def join_organisation
+    user = User.find(current_user.id)
+    user.update_attribute(:organisation_id, params[:organisation_id])
+    redirect_to organisation_path(params[:organisation_id])
+  end
+
+  def leave_organisation
+    user = User.find(current_user.id)
+    user.update_attribute(:organisation_id, nil)
+    redirect_to organisations_path
+  end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

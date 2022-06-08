@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Shifts</h1>
+<h1>Adnat</h1>
+<tr>
+<td><% @user = User.find(session[:user_id]) %></td>
+<td><%= "Logged in as #{@user.name} "%></td>
+<td><%= link_to 'Logout', logout_path  %></td>
+</tr>
+
+<h3>Shifts</h3>
 
 <table>
   <thead>
@@ -37,3 +44,4 @@
 <br>
 
 <%= link_to 'New Shift', new_shift_path %>
+<%= link_to 'Back',  @organisation %>

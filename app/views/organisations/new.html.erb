@@ -1,7 +1,14 @@
-<h1>New Organisation</h1>
+<h1>Adnat</h1>
+<tr>
+<td><% @user = User.find(session[:user_id]) %></td>
+<td><%= "Logged in as #{@user.name} "%></td>
+<td><%= link_to 'Logout', logout_path  %></td>
+</tr>
+
+<h2>New Organisation</h2>
 <%= render 'form', organisation: @organisation %>
 
-<%= link_to 'Back', organisations_path %>
+<%= link_to 'Back',  url_for(:back) %>
 
 
 

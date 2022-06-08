@@ -5,7 +5,7 @@
 <td><%= "Logged in as #{@user.name} "%></td>
 <td><%= link_to 'Logout', root_path %></td>
 </tr>
-<h1>Edit Organisation</h1>
+<h2>Edit Organisation</h2>
 <%= form_for @organisation do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
@@ -15,4 +15,4 @@
 <% end %>
 
 <%= link_to 'Delete', @organisation, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', organisations_path %>
+<%= link_to 'Back',  url_for(:back) %>
