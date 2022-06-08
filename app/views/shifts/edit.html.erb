@@ -1,6 +1,17 @@
-<h1>Editing Shift</h1>
 
-<%= render 'form', shift: @shift %>
 
-<%= link_to 'Show', @shift %> |
+<h2>Edit Shift</h2>
+<%= form_for @shift do |f| %>
+<%= f.label :shift_date %>
+<%= f.text_field :shift_date %><br>
+<%= f.label :start_time%>
+<%= f.text_field :start %><br>
+<%= f.label :finish_time %>
+<%= f.text_field :finish %><br>
+<%= f.label :break_length %>
+<%= f.text_field :break_length %><br>
+<%= f.submit "Update Organisation"%>
+<% end %>
+
+<%= link_to 'Delete', @shift, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back',  url_for(:back) %>
