@@ -62,7 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    bcrypt (3.1.17)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
@@ -135,7 +135,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (6.1.6)
       actionpack (= 6.1.6)
@@ -177,6 +177,8 @@ GEM
     sqlite3 (1.4.2)
     thor (1.2.1)
     tilt (2.0.10)
+    time_difference (0.5.0)
+      activesupport
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -221,6 +223,7 @@ DEPENDENCIES
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   sqlite3 (~> 1.4)
+  time_difference
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

@@ -11,7 +11,8 @@
       <th>Start time</th> 
       <th>Finish time</th> 
       <th>Break length</th> 
-      <th>Hours worked</th> 
+      <th>Hours worked</th>
+      <th></th> 
       <th>Shift cost</th> 
     </tr>
     <% @shifts.each do |shift| %>
@@ -21,10 +22,11 @@
       <td><%= shift.start.change(sec:shift.start.sec).strftime('%H:%M') %></td>
       <td><%= shift.finish.change(sec:shift.finish.sec).strftime('%H:%M') %></td>
       <td><%= shift.break_length %></td>
-      <td><%= shift.finish.change(sec:shift.start.sec).to_i - shift.start.change(sec:shift.start.sec).to_i - shift.break_length.to_i %><td>
-      <td><%= shift.finish.change(sec:shift.start.sec).to_i - shift.start.change(sec:shift.start.sec).to_i - shift.break_length.to_i * current_user.organisation.hourly_rate  %><td>
+      <% break_minutes = (shift.break_length.to_i / 60.00) %>
+      <td><%= TimeDifference.between(shift.finish.change(sec:shift.start.sec),shift.start.change(sec:shift.start.sec)).in_hours - break_minutes %><td>
+      <% hours_worked = TimeDifference.between(shift.finish.change(sec:shift.start.sec),shift.start.change(sec:shift.start.sec)).in_hours - break_minutes %>
+      <td><%= (hours_worked * 100).ceil/100.0 * (current_user.organisation.hourly_rate)  %><td>
       <% if current_user.id == shift.user_id %>
-        <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
         <td><%= link_to 'Delete', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
