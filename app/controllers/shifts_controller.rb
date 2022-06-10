@@ -21,7 +21,7 @@ class ShiftsController < ApplicationController
 
   
   def create
-    
+
     #if date was current date @start = Time.parse(params[:start]) @finish = Time.parse(params[:finish])
     @start_time = params[:shift][:shift_date].to_s + ' ' + params[:shift][:start].to_s
     @finish_time = params[:shift][:shift_date].to_s + ' ' + params[:shift][:finish].to_s

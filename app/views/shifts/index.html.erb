@@ -3,11 +3,10 @@
 
 
 <h3>Shifts</h3>
-<div class = "grid">
+<div>
 <table>
-  <thead>
     <tr>
-      <th colspan="7">Employee name</th> 
+      <th>Employee name</th> 
       <th>Shift date</th> 
       <th>Start time</th> 
       <th>Finish time</th> 
@@ -15,28 +14,22 @@
       <th>Hours worked</th> 
       <th>Shift cost</th> 
     </tr>
-  </thead>
-
-  <tbody>
     <% @shifts.each do |shift| %>
       <tr>
       <td><%= shift.user.name %></td>
-      <td><%= shift.shift_date %></td>
-      <td><%= shift.start %></td>
-      <td><%= shift.finish %></td>
+      <td><%= shift.start.to_date %></td>
+      <td><%= shift.start.change(sec:shift.start.sec) %></td>
+      <td><%= shift.finish.change(sec:shift.finish.sec) %></td>
       <td><%= shift.break_length %></td>
-      <td><%= (DateTime.parse(shift.finish).to_time - DateTime.parse(shift.start).to_time - shift.break_length) %><td>
-      <td><%= (DateTime.parse(shift.finish).to_time - DateTime.parse(shift.start).to_time - shift.break_length * @user.organisation.hourly_rate)  %><td>
-      <tr>
-      <% if @user.id == shift.user_id %>
+      <td><%= shift.finish.change(sec:shift.start.sec) - shift.start.change(sec:shift.start.sec) - shift.break_length %><td>
+      <td><%= shift.finish.change(sec:shift.start.sec) - shift.start.change(sec:shift.start.sec) - shift.break_length * current_user.organisation.hourly_rate  %><td>
+      <% if current_user.id == shift.user_id %>
         <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
         <td><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
-      </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
 </div>
 
 <br>

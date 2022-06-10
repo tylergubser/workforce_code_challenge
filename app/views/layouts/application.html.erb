@@ -16,7 +16,7 @@
     <tr>
     <td><% @user = User.find(session[:user_id]) %></td>
     <td><%= "Logged in as #{@user.name} "%></td>
-    <td><%= link_to 'Logout', logout_path  %></td> 
+    <td><%= link_to 'Logout', logout_path  %></td> | <td><%= link_to 'Edit Profile', edit_user_path(current_user.id) %></td>
     </tr>
   <% end %>
     <%= yield %>
