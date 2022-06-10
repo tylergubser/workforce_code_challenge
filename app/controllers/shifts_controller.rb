@@ -21,10 +21,11 @@ class ShiftsController < ApplicationController
 
   
   def create
+    
     #if date was current date @start = Time.parse(params[:start]) @finish = Time.parse(params[:finish])
-    @start = params[:shift_date].to_s + ' ' + Time.strptime(params[:start], '%I:%M %P').strftime("%H:%M").to_s
-    @finish = params[:shift_date].to_s + ' ' + Time.strptime(params[:finish], '%I:%M %P').strftime("%H:%M").to_s
-    @shift = Shift.new(user_id:current_user.id, start:@start, finish:@finish, break_length:params[:break_length])
+    @start_time = params[:shift][:shift_date].to_s + ' ' + params[:shift][:start].to_s
+    @finish_time = params[:shift][:shift_date].to_s + ' ' + params[:shift][:finish].to_s
+    @shift = Shift.create(user_id:current_user.id, start:@start_time, finish:@finish_time, break_length:params[:shift][:break_length])
 
     respond_to do |format|
       if @shift.save
