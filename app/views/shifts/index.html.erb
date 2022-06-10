@@ -17,15 +17,15 @@
     <% @shifts.each do |shift| %>
       <tr>
       <td><%= shift.user.name %></td>
-      <td><%= shift.start.to_date %></td>
-      <td><%= shift.start.change(sec:shift.start.sec) %></td>
-      <td><%= shift.finish.change(sec:shift.finish.sec) %></td>
+      <td><%= shift.start.to_date.strftime('%m/%d/%y') %></td>
+      <td><%= shift.start.change(sec:shift.start.sec).strftime('%H:%M') %></td>
+      <td><%= shift.finish.change(sec:shift.finish.sec).strftime('%H:%M') %></td>
       <td><%= shift.break_length %></td>
       <td><%= shift.finish.change(sec:shift.start.sec) - shift.start.change(sec:shift.start.sec) - shift.break_length %><td>
       <td><%= shift.finish.change(sec:shift.start.sec) - shift.start.change(sec:shift.start.sec) - shift.break_length * current_user.organisation.hourly_rate  %><td>
       <% if current_user.id == shift.user_id %>
         <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
-        <td><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
     <% end %>
