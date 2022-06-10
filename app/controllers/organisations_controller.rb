@@ -37,9 +37,10 @@ class OrganisationsController < ApplicationController
 
   
   def update
+    
     respond_to do |format|
       if @organisation.update(organisation_params)
-        format.html { redirect_to organisations_path}
+        format.html { redirect_to organisation_path(params[:id])}
         format.json { render :show, status: :ok, location: @organisation }
       else
         format.html { render :edit, status: :unprocessable_entity }
