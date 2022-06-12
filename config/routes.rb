@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :organisations
+  resources :shifts do
+    match "destroy_user_shifts" => "shifts#destroy_user_shifts", :as => :destroy_user_shifts, via: :get
+  end
   resources :shifts
   resources :users do 
     match "join_organisation" => "users#join_organisation", :as => :join_organisation, via: :get
@@ -7,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do 
     match "leave_organisation" => "users#leave_organisation", :as => :leave_organisation, via: :get
   end
+  
   resources :users, only: [:index, :create, :update, :destroy, :joinOrganisation]
   # root "sessions#home"
   # get '/', to: 'sessions#index', as: 'root'

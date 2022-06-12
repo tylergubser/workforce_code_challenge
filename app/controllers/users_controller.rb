@@ -69,9 +69,12 @@ class UsersController < ApplicationController
   def leave_organisation
     user = User.find(current_user.id)
     user.update_attribute(:organisation_id, nil)
-    user_shift = Shift.where(:user_id == current_user.id)
-    user_shift.delete
+    
+    #  shifts_destroy_user_shifts_url
+    ShiftsController.destroy_user_shifts(params)
     redirect_to organisations_path
+    # redirect_to controller: :shifts, action: :get
+    
   end
 
   
