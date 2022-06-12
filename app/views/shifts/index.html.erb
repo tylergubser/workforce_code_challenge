@@ -17,6 +17,7 @@
     </tr>
     <% @shifts.each do |shift| %>
       <tr>
+      <% if shift.user.organisation.id == current_user.organisation_id %>
       <td><%= shift.user.name %></td>
       <td><%= shift.start.to_date.strftime('%m/%d/%y') %></td>
       <td><%= shift.start.change(sec:shift.start.sec).strftime('%H:%M') %></td>
@@ -30,6 +31,7 @@
         <td><%= link_to 'Delete', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>
+      <%end%>
     <% end %>
   </table>
 </div>

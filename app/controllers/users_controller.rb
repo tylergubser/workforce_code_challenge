@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   
   def destroy
-    @user.destroy
+    @shift.destroy
 
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
@@ -69,6 +69,8 @@ class UsersController < ApplicationController
   def leave_organisation
     user = User.find(current_user.id)
     user.update_attribute(:organisation_id, nil)
+    user_shift = Shift.where(:user_id == current_user.id)
+    user_shift.delete
     redirect_to organisations_path
   end
 

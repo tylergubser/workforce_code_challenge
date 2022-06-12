@@ -9,4 +9,6 @@ class User < ApplicationRecord
     :length => {:within => 6..40}
 
     
+
+    
 end
