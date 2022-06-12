@@ -61,10 +61,7 @@ class ShiftsController < ApplicationController
   end
 
   def self.destroy_user_shifts(params)
-    
-    shift = Shift.where(user_id:params[:user_id]).delete_all
-    # redirect_to organisations_path
-  
+    Shift.where(user_id:params[:user_id]).delete_all
   end
 
   private

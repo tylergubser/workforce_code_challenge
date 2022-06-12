@@ -65,27 +65,27 @@ class UsersController < ApplicationController
     user.update_attribute(:organisation_id, params[:organisation_id])
     redirect_to organisation_path(params[:organisation_id])
   end
-  # updating user's organisation id to nil 
+  # updating user's organisation id to nil and firing off destroyUserShifts method from shifts controller
   def leave_organisation
     user = User.find(current_user.id)
     user.update_attribute(:organisation_id, nil)
     
-    #  shifts_destroy_user_shifts_url
+   
     ShiftsController.destroy_user_shifts(params)
     redirect_to organisations_path
-    # redirect_to controller: :shifts, action: :get
+    
     
   end
 
   
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_user
       @user = User.find(current_user[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    
     def user_params
       params.require(:user).permit(:organisation_id, :name, :email_address, :password)
     end
